@@ -7,7 +7,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <React.Fragment>
-        <Route exact path="/" component={Register} />
+        <Route exact path="/" />
+        <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
       </React.Fragment>
     </BrowserRouter>

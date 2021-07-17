@@ -10,11 +10,14 @@ const TitleForm = ({ title }) => {
 };
 
 //PLANTILLA DEL FORMULARIO
-const FormRL = ({ type }) => {
+const FormRL = ({ type, onChange, onFinishFailed, onSubmit }) => {
   return (
     <>
       {type === "register" ? (
-        <Form name="register-form" initialValues={{ remember: true }}>
+        <Form
+          name="register-form"
+          onFinishFailed={onFinishFailed}
+        >
           <Form.Item
             name="email"
             rules={[
@@ -27,10 +30,13 @@ const FormRL = ({ type }) => {
                 message: "Por favor ingrese su correo",
               },
             ]}
+            hasFeedback
           >
             <Input
               prefix={<MailOutlined className="site-form-item-icon" />}
               placeholder="Correo Electrónico"
+              name="email"
+              onChange={onChange}
             />
           </Form.Item>
           <Form.Item
@@ -43,6 +49,8 @@ const FormRL = ({ type }) => {
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
               placeholder="Usuario"
+              name="username"
+              onChange={onChange}
             />
           </Form.Item>
 
@@ -60,7 +68,7 @@ const FormRL = ({ type }) => {
                     return Promise.resolve();
                   }
                   return Promise.reject(
-                    new Error("La contraseña debe tener al menos un número")
+                    new Error("Debe tener al menos un número")
                   );
                 },
               },
@@ -71,7 +79,7 @@ const FormRL = ({ type }) => {
                   }
                   return Promise.reject(
                     new Error(
-                      "La contraseña debe tener al menos un letra en mayúscula"
+                      "Debe tener al menos un letra en mayúscula"
                     )
                   );
                 },
@@ -82,6 +90,8 @@ const FormRL = ({ type }) => {
             <Input.Password
               prefix={<LockOutlined className="site-form-item-icon" />}
               placeholder="Contraseña"
+              name="pass"
+              onChange={onChange}
             />
           </Form.Item>
           <Form.Item
@@ -113,13 +123,17 @@ const FormRL = ({ type }) => {
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" onClick={onSubmit}>
               Registrarme
             </Button>
           </Form.Item>
         </Form>
       ) : (
-        <Form name="login-form" initialValues={{ remember: true }}>
+        <Form
+          name="login-form"
+          initialValues={{ remember: true }}
+          onFinishFailed={onFinishFailed}
+        >
           <Form.Item
             name="email"
             rules={[
@@ -136,6 +150,8 @@ const FormRL = ({ type }) => {
             <Input
               prefix={<MailOutlined className="site-form-item-icon" />}
               placeholder="Correo Electrónico"
+              name="email"
+              onChange={onChange}
             />
           </Form.Item>
           <Form.Item
@@ -145,10 +161,12 @@ const FormRL = ({ type }) => {
             <Input.Password
               prefix={<LockOutlined className="site-form-item-icon" />}
               placeholder="Password"
+              name="pass"
+              onChange={onChange}
             />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" onClick={onSubmit}>
               Iniciar sesión
             </Button>
           </Form.Item>
@@ -174,7 +192,7 @@ const LinkForm = ({ type }) => {
       {type === "register" ? (
         <Link to="/login"> Ya tengo una cuenta</Link>
       ) : (
-        <Link to="/"> Crear una cuenta</Link>
+        <Link to="/register"> Crear una cuenta</Link>
       )}
     </>
   );

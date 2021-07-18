@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import { Layout } from "antd";
 import Wrapper from "./Wrapper";
-import AsideMenu, { Configuration, Logo } from "../../components/Markup/AsideMenu";
+import AsideMenu, {
+  Configuration,
+  Logo,
+} from "../../components/Markup/AsideMenu";
 import logo from "../../assets/images/LAE-Logo-PNG.png";
+import {
+  AvatarUser,
+  Notification,
+  SearchInput,
+} from "../../components/Markup/Header";
 
 const { Header, Footer, Sider, Content } = Layout;
 
 const Index = () => {
   const [collapsed, setCollapsed] = useState(false);
-
 
   return (
     <Wrapper>
@@ -21,9 +28,15 @@ const Index = () => {
             <AsideMenu />
           </div>
         </Sider>
-        <Configuration/>
+        <Configuration />
         <Layout>
-          <Header>Header</Header>
+          <Header>
+            <SearchInput />
+            <div className="toolbar">
+              <Notification numNotification={5} />
+              <AvatarUser username='Carlos' />
+            </div>
+          </Header>
           <Content>Content</Content>
           <Footer>Footer</Footer>
         </Layout>

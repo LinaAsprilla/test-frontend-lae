@@ -156,11 +156,11 @@ const FormRL = ({ type, onChange, onFinishFailed, onSubmit }) => {
           </Form.Item>
           <Form.Item
             name="password"
-            rules={[{ required: true, message: "Please input your password!" }]}
+            rules={[{ required: true, message: "Por favor ingrese su contraseña" }]}
           >
             <Input.Password
               prefix={<LockOutlined className="site-form-item-icon" />}
-              placeholder="Password"
+              placeholder="Contraseña"
               name="pass"
               onChange={onChange}
             />

@@ -11,13 +11,12 @@ const TitleForm = ({ title }) => {
 
 //PLANTILLA DEL FORMULARIO
 const FormRL = ({ type, onChange, onFinishFailed, onSubmit }) => {
+  //FORMULARIO
+  const [form] = Form.useForm();
   return (
     <>
       {type === "register" ? (
-        <Form
-          name="register-form"
-          onFinishFailed={onFinishFailed}
-        >
+        <Form name="register-form" form={form} scrollToFirstError>
           <Form.Item
             name="email"
             rules={[
@@ -78,9 +77,7 @@ const FormRL = ({ type, onChange, onFinishFailed, onSubmit }) => {
                     return Promise.resolve();
                   }
                   return Promise.reject(
-                    new Error(
-                      "Debe tener al menos un letra en mayúscula"
-                    )
+                    new Error("Debe tener al menos un letra en mayúscula")
                   );
                 },
               },
@@ -122,10 +119,21 @@ const FormRL = ({ type, onChange, onFinishFailed, onSubmit }) => {
             />
           </Form.Item>
 
-          <Form.Item>
-            <Button type="primary" htmlType="submit" onClick={onSubmit}>
-              Registrarme
-            </Button>
+          <Form.Item shouldUpdate={true}>
+            {() => (
+              <Button
+                type="primary"
+                htmlType="submit"
+                onClick={onSubmit}
+                disabled={
+                  !form.isFieldsTouched(true) ||
+                  form.getFieldError().filter(({ errors }) => errors.length >1)
+                    .length
+                }
+              >
+                Registrarme
+              </Button>
+            )}
           </Form.Item>
         </Form>
       ) : (
@@ -156,7 +164,9 @@ const FormRL = ({ type, onChange, onFinishFailed, onSubmit }) => {
           </Form.Item>
           <Form.Item
             name="password"
-            rules={[{ required: true, message: "Por favor ingrese su contraseña" }]}
+            rules={[
+              { required: true, message: "Por favor ingrese su contraseña" },
+            ]}
           >
             <Input.Password
               prefix={<LockOutlined className="site-form-item-icon" />}

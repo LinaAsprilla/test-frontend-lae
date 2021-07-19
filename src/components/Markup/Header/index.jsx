@@ -1,9 +1,7 @@
 import { Input, Badge, Avatar, Dropdown, Menu } from "antd";
-import {
-  BellOutlined,
-  UserOutlined,
-  LoginOutlined,
-} from "@ant-design/icons";
+import { BellOutlined, UserOutlined, LoginOutlined } from "@ant-design/icons";
+import firebase from "../../../firebase/firebaseConfig";
+
 
 //BUSCADOR
 const SearchInput = () => {
@@ -32,14 +30,14 @@ const Notification = ({ numNotification }) => {
 
 //IMAGEN DEL USUARIO
 const AvatarUser = ({ username }) => {
+  const logOut = () => {
+    firebase.auth().signOut();
+  };
+
   const menu = (
     <Menu>
-      <Menu.Item icon={<LoginOutlined />} key='2'>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
+      <Menu.Item icon={<LoginOutlined />} key="2">
+        <a href="/login" onClick={logOut}>
           Cerrar sesión
         </a>
       </Menu.Item>
@@ -52,7 +50,7 @@ const AvatarUser = ({ username }) => {
         <Avatar
           style={{
             backgroundColor: "#2BA8D9",
-            cursor: 'pointer'
+            cursor: "pointer",
           }}
           icon={<UserOutlined />}
         ></Avatar>

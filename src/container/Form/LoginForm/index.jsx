@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import FormRL, {
   ImageForm,
@@ -13,9 +13,11 @@ import Wrapper, {
 import Logo from "../../../assets/images/LAE-Logo-PNG.png";
 import firebase from "../../../firebase/firebaseConfig";
 import { message } from "antd";
+import { Auth } from "../../../context/stateUser";
 
 const Index = () => {
   const history = useHistory();
+  const { users } = useContext(Auth);
 
   //VARIABLES DEL FORMULARIO
   const initialStateValues = {
@@ -57,25 +59,32 @@ const Index = () => {
       });
   };
 
+  useEffect(() => {
+    if (users) {
+      history.push("/");
+    }
+  }, [history, users]);
   return (
-    <Main>
-      <Wrapper>
-        <div className="content">
-          <ValidateImage login>
-            <ImageForm image={Logo} />
-            <LinkForm type="Iniciar sesión" />
-          </ValidateImage>
-          <ValidateForm>
-            <TitleForm title="Iniciar sesión" />
-            <FormRL
-              type="Iniciar sesión"
-              onChange={handleInputChange}
-              onSubmit={loginUser}
-            />
-          </ValidateForm>
-        </div>
-      </Wrapper>
-    </Main>
+    <>
+      <Main>
+        <Wrapper>
+          <div className="content">
+            <ValidateImage login>
+              <ImageForm image={Logo} />
+              <LinkForm type="Iniciar sesión" />
+            </ValidateImage>
+            <ValidateForm>
+              <TitleForm title="Iniciar sesión" />
+              <FormRL
+                type="Iniciar sesión"
+                onChange={handleInputChange}
+                onSubmit={loginUser}
+              />
+            </ValidateForm>
+          </div>
+        </Wrapper>
+      </Main>
+    </>
   );
 };
 

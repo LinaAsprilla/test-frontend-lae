@@ -6,7 +6,7 @@ import {
   SolutionOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import { Button, Menu} from "antd";
+import { Button, Menu } from "antd";
 
 //IMPORTAR LOGO EMPRESA
 const Logo = ({ logo }) => {
@@ -52,8 +52,11 @@ const Configuration = () => {
   );
 };
 
+//INICIO
 const Home = () => {
-  return <h1>Hola</h1>;
+  return (
+  <h2>Inicio</h2>
+  );
 };
 
 export default AsideMenu;

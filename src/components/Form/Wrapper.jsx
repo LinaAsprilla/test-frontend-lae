@@ -79,6 +79,12 @@ const Wrapper = styled.div`
     text-align: center;
     text-decoration: underline;
   }
+  .ant-btn-primary[disabled],
+  .ant-btn-primary[disabled]:hover,
+  .ant-btn-primary[disabled]:focus,
+  .ant-btn-primary[disabled]:active {
+    color: white;
+  }
 `;
 
 const ValidateForm = styled.div`

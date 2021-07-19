@@ -3,7 +3,6 @@ import {
   BellOutlined,
   UserOutlined,
   LoginOutlined,
-  DownOutlined,
 } from "@ant-design/icons";
 
 //BUSCADOR
@@ -51,6 +50,7 @@ const AvatarUser = ({ username }) => {
         <Avatar
           style={{
             backgroundColor: "#2BA8D9",
+            cursor: 'pointer'
           }}
           icon={<UserOutlined />}
         ></Avatar>

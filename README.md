@@ -2,7 +2,7 @@
 
 This is a project developed with ReactJs, NodeJs and Firebase. With it you can create your list of tasks and manage them (create, edit and delete). In addition, you can have your contact list in one place.
 
-For the live version, see https://mdn.github.io/todo-react-build/.
+For the live version, see https://test-lae-9293c.web.app.
 
 ## Features
 

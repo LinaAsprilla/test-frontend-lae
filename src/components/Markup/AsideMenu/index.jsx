@@ -6,8 +6,9 @@ import {
   SolutionOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import { Button, Menu } from "antd";
+import { Button, Menu} from "antd";
 
+//IMPORTAR LOGO EMPRESA
 const Logo = ({ logo }) => {
   return (
     <Link to="/">
@@ -16,10 +17,16 @@ const Logo = ({ logo }) => {
   );
 };
 
-const AsideMenu = () => {
+//CREAR ASIDEMENU
+const AsideMenu = (props) => {
   return (
     <>
-      <Menu theme="light" mode="inline" defaultSelectedKeys={["1"]}>
+      <Menu
+        onClick={props.currentMenu}
+        theme="light"
+        mode="inline"
+        defaultSelectedKeys={["1"]}
+      >
         <Menu.Item key="1" icon={<HomeOutlined />}>
           Inicio
         </Menu.Item>
@@ -34,6 +41,7 @@ const AsideMenu = () => {
   );
 };
 
+//CONFIGURACION DEL ASIDEMENU
 const Configuration = () => {
   return (
     <div className="ant-layout-sider-trigger">
@@ -44,5 +52,9 @@ const Configuration = () => {
   );
 };
 
+const Home = () => {
+  return <h1>Hola</h1>;
+};
+
 export default AsideMenu;
-export { Logo, Configuration };
+export { Logo, Configuration, Home };

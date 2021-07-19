@@ -3,7 +3,6 @@ import {
   BellOutlined,
   UserOutlined,
   LoginOutlined,
-  DownOutlined,
 } from "@ant-design/icons";
 
 //BUSCADOR
@@ -22,6 +21,7 @@ const SearchInput = () => {
   );
 };
 
+//NOTIFICACIÓN DE TAREA NUEVA
 const Notification = ({ numNotification }) => {
   return (
     <Badge count={numNotification} size="small">
@@ -30,6 +30,7 @@ const Notification = ({ numNotification }) => {
   );
 };
 
+//IMAGEN DEL USUARIO
 const AvatarUser = ({ username }) => {
   const menu = (
     <Menu>
@@ -51,6 +52,7 @@ const AvatarUser = ({ username }) => {
         <Avatar
           style={{
             backgroundColor: "#2BA8D9",
+            cursor: 'pointer'
           }}
           icon={<UserOutlined />}
         ></Avatar>

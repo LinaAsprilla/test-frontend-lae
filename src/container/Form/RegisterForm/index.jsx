@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import FormRL, {
   ImageForm,
@@ -42,18 +42,15 @@ const Index = () => {
   const onFinishFailed = () => {
     setInputError(true);
   };
+
   //REGISTRAR USUARIO
   const onSubmit = async () => {
     await firebase
       .auth()
       .createUserWithEmailAndPassword(values.email, values.pass)
       .then(() => {
-        if (inputError) {
-          message.success(` ${values.username}, se ha registrado con éxito`, 5);
-          setTimeout(() => {
-            history.push("login");
-          }, 900);
-        }
+        message.success(` ${values.username}, se ha registrado con éxito`, 5);
+        history.push("login");
         db.doc(values.email).set({
           username: values.username,
         });
@@ -62,7 +59,6 @@ const Index = () => {
         if (error.code === "auth/email-already-in-use") {
           setTimeout(() => {
             message.error("Este correo ya se encuentra registrado", 5);
-            console.log(error);
           }, 5);
         } else {
           return null;

@@ -114,6 +114,7 @@ const UserList = () => {
         docs.push({ ...doc.data(), id: doc.id });
       });
       setUsers(docs);
+      console.log(docs);
     });
     return () => getUsers();
   }, []);

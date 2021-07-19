@@ -107,6 +107,7 @@ const TaskList = (props) => {
     },
   ];
 
+  //COLUMNAS
   const mergedColumns = columns.map((col) => {
     if (!col.editable) {
       return col;

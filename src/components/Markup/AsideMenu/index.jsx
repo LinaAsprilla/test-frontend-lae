@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 import { Button, Menu} from "antd";
 
-
+//IMPORTAR LOGO EMPRESA
 const Logo = ({ logo }) => {
   return (
     <Link to="/">
@@ -17,6 +17,7 @@ const Logo = ({ logo }) => {
   );
 };
 
+//CREAR ASIDEMENU
 const AsideMenu = (props) => {
   return (
     <>
@@ -40,6 +41,7 @@ const AsideMenu = (props) => {
   );
 };
 
+//CONFIGURACION DEL ASIDEMENU
 const Configuration = () => {
   return (
     <div className="ant-layout-sider-trigger">

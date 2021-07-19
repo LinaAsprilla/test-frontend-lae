@@ -21,6 +21,7 @@ const SearchInput = () => {
   );
 };
 
+//NOTIFICACIÓN DE TAREA NUEVA
 const Notification = ({ numNotification }) => {
   return (
     <Badge count={numNotification} size="small">
@@ -29,6 +30,7 @@ const Notification = ({ numNotification }) => {
   );
 };
 
+//IMAGEN DEL USUARIO
 const AvatarUser = ({ username }) => {
   const menu = (
     <Menu>

@@ -50,7 +50,7 @@ const Index = () => {
       .createUserWithEmailAndPassword(values.email, values.pass)
       .then(() => {
         message.success(` ${values.username}, se ha registrado con éxito`, 5);
-        history.push("login");
+        history.push("/login");
         db.doc(values.email).set({
           username: values.username,
         });

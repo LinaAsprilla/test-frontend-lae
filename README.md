@@ -1,3 +1,18 @@
+# TODO-LIST APP
+
+This is a project developed with ReactJs, NodeJs and Firebase. With it you can create your list of tasks and manage them (create, edit and delete). In addition, you can have your contact list in one place.
+
+For the live version, see https://test-lae-9293c.web.app.
+
+## Features
+
+1. Create User Account
+2. Add Users
+3. Add, edit and delete Taks.
+4. Option Logout. 
+5. Routes protected with your user account.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -6,6 +21,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+
+
+Install dependencies and run with:
+### `npm install`
 ### `npm start`
 
 Runs the app in the development mode.\

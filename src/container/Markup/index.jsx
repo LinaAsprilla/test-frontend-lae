@@ -14,12 +14,14 @@ import {
 } from "../../components/Markup/Header";
 import StateMenu from "../../context/stateMenu";
 import UserList from "../../components/Markup/Content/UserList";
+import TaskList from "../../components/Markup/Content/TaskList";
 
 const { Header, Footer, Sider, Content } = Layout;
 
 const Index = () => {
-  const [collapsed, setCollapsed] = useState(false);
+
   const [menuKey, setMenuKey] = useState("1");
+  const [numTaks, setNumTaks] = useState('');
 
   const currentMenu = (e) => {
     setMenuKey(e.key);
@@ -29,7 +31,7 @@ const Index = () => {
     <StateMenu.Provider value={menuKey}>
       <Wrapper>
         <Layout>
-          <Sider trigger={null} collapsible collapsed={collapsed}>
+          <Sider trigger={null}>
             <div className="aside-top">
               <Logo logo={logo} />
             </div>
@@ -42,14 +44,20 @@ const Index = () => {
             <Header>
               <SearchInput />
               <div className="toolbar">
-                <Notification numNotification={5} />
+                <Notification numNotification={numTaks} />
                 <AvatarUser username="Carlos" />
               </div>
             </Header>
             <Content>
               <StateMenu.Consumer>
                 {(state) =>
-                  state === "1" ? <Home /> : state === "2" ? <UserList /> : null
+                  state === "1" ? (
+                    <Home />
+                  ) : state === "2" ? (
+                    <UserList />
+                  ) : (
+                    <TaskList setTask={setNumTaks} />
+                  )
                 }
               </StateMenu.Consumer>
             </Content>
